@@ -1,4 +1,4 @@
-# MPMad
+# mpm-ad
 
 [![Stable Documentation](https://img.shields.io/badge/docs-stable-blue.svg)](https://thealanjason.github.io/MPMad.jl/stable)
 [![In development documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://thealanjason.github.io/MPMad.jl/dev)
@@ -14,7 +14,7 @@
 
 ## How to Cite
 
-If you use MPMad.jl in your work, please cite using the reference given in [CITATION.cff](https://github.com/thealanjason/MPMad.jl/blob/main/CITATION.cff).
+If you use `mpm-ad` in your work, please cite using the reference given in [CITATION.cff](https://github.com/thealanjason/MPMad.jl/blob/main/CITATION.cff).
 
 ## Contributing
 
