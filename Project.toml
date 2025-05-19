@@ -1,0 +1,7 @@
+name = "MPMad"
+uuid = "5f3b0214-e7a9-514e-b3f4-507bca2b8891"
+authors = ["Alan Correa <correa@mbd.rwth-aachen.de>"]
+version = "0.1.0"
+
+[compat]
+julia = "1.10"

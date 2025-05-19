@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+AnswerStrategy: recommended
+Authors: Alan Correa <correa@mbd.rwth-aachen.de>
+CodeOfConductContact: correa@mbd.rwth-aachen.de
+ConfigIndentation: 2
+JuliaIndentation: 4
+JuliaMinVersion: '1.10'
+License: MIT
+LicenseCopyrightHolders: Alan Correa
+MarkdownIndentation: 2
+PackageName: MPMad
+PackageOwner: thealanjason
+PackageUUID: 5f3b0214-e7a9-514e-b3f4-507bca2b8891
+_commit: v0.15.0
+_src_path: https://github.com/JuliaBesties/BestieTemplate.jl
