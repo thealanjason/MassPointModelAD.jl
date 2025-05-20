@@ -1,4 +1,4 @@
-# mpm-ad
+# MassPointModelAD
 
 <!-- [![Stable Documentation](https://img.shields.io/badge/docs-stable-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/stable)
 [![In development documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/dev)
