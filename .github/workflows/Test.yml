@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         version:
-          - "lts"
+          - "1.10"
           - "1"
         os:
           - ubuntu-latest
@@ -31,3 +31,16 @@ jobs:
         arch:
           - x64
         allow_failure: [false]
+        include:
+          - version: "nightly"
+            os: ubuntu-latest
+            arch: x64
+            allow_failure: true
+          - version: "nightly"
+            os: macOS-latest
+            arch: x64
+            allow_failure: true
+          - version: "nightly"
+            os: windows-latest
+            arch: x64
+            allow_failure: true

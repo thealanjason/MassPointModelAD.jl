@@ -1,9 +1,21 @@
 # Changes here will be overwritten by Copier
-AnswerStrategy: recommended
+AddAllcontributors: false
+AddCodeOfConduct: true
+AddContributionDocs: true
+AddCopierCI: true
+AddGitHubTemplates: false
+AddMacToCI: true
+AddPrecommit: true
+AddWinToCI: true
+AnswerStrategy: ask
 Authors: Alan Correa <correa@mbd.rwth-aachen.de>
+AutoIncludeTests: true
+CheckExplicitImports: true
 CodeOfConductContact: correa@mbd.rwth-aachen.de
 ConfigIndentation: 2
+ExplicitImportsChecklist: exclude_all_qualified_accesses_are_public
 JuliaIndentation: 4
+JuliaMinCIVersion: '1.10'
 JuliaMinVersion: '1.10'
 License: MIT
 LicenseCopyrightHolders: Alan Correa
@@ -11,5 +23,7 @@ MarkdownIndentation: 2
 PackageName: MassPointModelAD
 PackageOwner: thealanjason
 PackageUUID: 5f3b0214-e7a9-514e-b3f4-507bca2b8891
+RunJuliaNightlyOnCI: true
+UseCirrusCI: false
 _commit: v0.15.0
 _src_path: https://github.com/JuliaBesties/BestieTemplate.jl
