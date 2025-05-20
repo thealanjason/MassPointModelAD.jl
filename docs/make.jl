@@ -1,7 +1,12 @@
 using MassPointModelAD
 using Documenter
 
-DocMeta.setdocmeta!(MassPointModelAD, :DocTestSetup, :(using MassPointModelAD); recursive = true)
+DocMeta.setdocmeta!(
+    MassPointModelAD,
+    :DocTestSetup,
+    :(using MassPointModelAD);
+    recursive = true,
+)
 
 const page_rename = Dict("developer.md" => "Developer docs") # Without the numbers
 const numbered_pages = [
@@ -14,7 +19,9 @@ makedocs(;
     authors = "Alan Correa <correa@mbd.rwth-aachen.de>",
     repo = "https://github.com/thealanjason/MassPointModelAD.jl/blob/{commit}{path}#{line}",
     sitename = "MassPointModelAD.jl",
-    format = Documenter.HTML(; canonical = "https://thealanjason.github.io/MassPointModelAD.jl"),
+    format = Documenter.HTML(;
+        canonical = "https://thealanjason.github.io/MassPointModelAD.jl",
+    ),
     pages = ["index.md"; numbered_pages],
 )
 

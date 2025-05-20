@@ -1,6 +1,6 @@
 # MassPointModelAD
 
-<!-- [![Stable Documentation](https://img.shields.io/badge/docs-stable-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/stable)
+[![Stable Documentation](https://img.shields.io/badge/docs-stable-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/stable)
 [![In development documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/dev)
 [![Build Status](https://github.com/thealanjason/MassPointModelAD.jl/workflows/Test/badge.svg)](https://github.com/thealanjason/MassPointModelAD.jl/actions)
 [![Test workflow status](https://github.com/thealanjason/MassPointModelAD.jl/actions/workflows/Test.yml/badge.svg?branch=main)](https://github.com/thealanjason/MassPointModelAD.jl/actions/workflows/Test.yml?query=branch%3Amain)
@@ -14,21 +14,8 @@
 
 ## How to Cite
 
-If you use `MassPointModelAD` in your work, please cite using the reference given in [CITATION.cff](https://github.com/thealanjason/MassPointModelAD.jl/blob/main/CITATION.cff).
+If you use MassPointModelAD.jl in your work, please cite using the reference given in [CITATION.cff](https://github.com/thealanjason/MassPointModelAD.jl/blob/main/CITATION.cff).
 
 ## Contributing
 
 If you want to make contributions of any kind, please first that a look into our [contributing guide directly on GitHub](docs/src/90-contributing.md) or the [contributing page on the website](https://thealanjason.github.io/MassPointModelAD.jl/dev/90-contributing/)
-
----
-
-### Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
