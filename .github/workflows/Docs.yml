@@ -45,9 +45,9 @@ jobs:
         run: |
           julia --project=docs -e '
             using Documenter: DocMeta, doctest
-            using MPMad
-            DocMeta.setdocmeta!(MPMad, :DocTestSetup, :(using MPMad); recursive=true)
-            doctest(MPMad)'
+            using MassPointModelAD
+            DocMeta.setdocmeta!(MassPointModelAD, :DocTestSetup, :(using MassPointModelAD); recursive=true)
+            doctest(MassPointModelAD)'
       - name: Generate and deploy documentation
         run: julia --project=docs docs/make.jl
         env:

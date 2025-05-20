@@ -1,5 +1,5 @@
 {
-  "projectName": "MPMad",
+  "projectName": "MassPointModelAD.jl",
   "projectOwner": "thealanjason",
   "files": ["README.md", "docs/src/index.md"]
 }

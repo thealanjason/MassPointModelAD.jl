@@ -5,7 +5,7 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 LiveServer = "16fef848-5104-11e9-1b77-fb7a48bbb589"
-MPMad = "5f3b0214-e7a9-514e-b3f4-507bca2b8891"
+MassPointModelAD = "5f3b0214-e7a9-514e-b3f4-507bca2b8891"
 
 [compat]
 Documenter = "1"

@@ -1,4 +1,4 @@
-module MPMad
+module MassPointModelAD
 
 """
     hi = hello_world()

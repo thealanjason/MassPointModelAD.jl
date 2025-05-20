@@ -1,4 +1,4 @@
-name = "MPMad"
+name = "MassPointModelAD"
 uuid = "5f3b0214-e7a9-514e-b3f4-507bca2b8891"
 authors = ["Alan Correa <correa@mbd.rwth-aachen.de>"]
 version = "0.1.0"

@@ -1,7 +1,7 @@
-using MPMad
+using MassPointModelAD
 using Documenter
 
-DocMeta.setdocmeta!(MPMad, :DocTestSetup, :(using MPMad); recursive = true)
+DocMeta.setdocmeta!(MassPointModelAD, :DocTestSetup, :(using MassPointModelAD); recursive = true)
 
 const page_rename = Dict("developer.md" => "Developer docs") # Without the numbers
 const numbered_pages = [
@@ -10,12 +10,12 @@ const numbered_pages = [
 ]
 
 makedocs(;
-    modules = [MPMad],
+    modules = [MassPointModelAD],
     authors = "Alan Correa <correa@mbd.rwth-aachen.de>",
-    repo = "https://github.com/thealanjason/MPMad.jl/blob/{commit}{path}#{line}",
-    sitename = "MPMad.jl",
-    format = Documenter.HTML(; canonical = "https://thealanjason.github.io/MPMad.jl"),
+    repo = "https://github.com/thealanjason/MassPointModelAD.jl/blob/{commit}{path}#{line}",
+    sitename = "MassPointModelAD.jl",
+    format = Documenter.HTML(; canonical = "https://thealanjason.github.io/MassPointModelAD.jl"),
     pages = ["index.md"; numbered_pages],
 )
 
-deploydocs(; repo = "github.com/thealanjason/MPMad.jl")
+deploydocs(; repo = "github.com/thealanjason/MassPointModelAD.jl")

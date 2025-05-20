@@ -1,10 +1,10 @@
 ```@meta
-CurrentModule = MPMad
+CurrentModule = MassPointModelAD
 ```
 
 # MPMad
 
-Documentation for [MPMad](https://github.com/thealanjason/MPMad.jl).
+Documentation for [MassPointModelAD](https://github.com/thealanjason/MassPointModelAD.jl).
 
 ## Contributors
 
