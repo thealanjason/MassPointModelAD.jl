@@ -1,3 +1,3 @@
-@testset "MPMad.jl" begin
-    @test MPMad.hello_world() == "Hello, World!"
+@testset "MassPointModelAD.jl" begin
+    @test MassPointModelAD.run_model() == "MassPointModelAD"
 end

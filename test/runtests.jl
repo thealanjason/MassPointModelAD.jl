@@ -1,4 +1,4 @@
-using MPMad
+using MassPointModelAD
 using Test
 
 #=

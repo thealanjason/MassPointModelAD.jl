@@ -1,11 +1,11 @@
 module MassPointModelAD
 
 """
-    hi = hello_world()
-A simple function to return "Hello, World!"
+    output = run_model()
+A simple function to return "MassPointModelAD".
 """
-function hello_world()
-    return "Hello, World!"
+function run_model()
+    return "MassPointModelAD"
 end
 
 end
