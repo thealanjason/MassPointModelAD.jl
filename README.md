@@ -2,7 +2,6 @@
 
 Mass Point Model w/ Algorthmic Differentiation
 
-
 > Don’t confuse momentum with progress. A rock rolling down hill has momentum. But if its rolling towards your house, it isn’t progress. [1](https://bernhold.github.io/scientific-humor/#047)
 
 <!-- [![Stable Documentation](https://img.shields.io/badge/docs-stable-blue.svg)](https://thealanjason.github.io/MassPointModelAD.jl/stable) -->
