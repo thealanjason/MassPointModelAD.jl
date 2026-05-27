@@ -3,5 +3,11 @@ uuid = "5f3b0214-e7a9-514e-b3f4-507bca2b8891"
 authors = ["Alan Correa <correa@mbd.rwth-aachen.de>"]
 version = "0.1.0"
 
+[deps]
+ForwardDiff = "f6369f11-7733-5829-9624-2563aa707210"
+OrdinaryDiffEq = "1dea7af3-3e70-54e6-95c3-0bf5283fa5ed"
+
 [compat]
+ForwardDiff = "1.3.3"
+OrdinaryDiffEq = "7.0.0"
 julia = "1.10"

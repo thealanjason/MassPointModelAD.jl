@@ -1,3 +1,5 @@
 @testset "MassPointModelAD.jl" begin
-    @test MassPointModelAD.run_model() == "MassPointModelAD"
+    @test isdefined(MassPointModelAD, :MPMParams)
+    @test isdefined(MassPointModelAD, :MPM_rhs)
+    @test isdefined(MassPointModelAD, :simulate)
 end
