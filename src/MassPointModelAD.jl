@@ -1,9 +1,12 @@
 module MassPointModelAD
 
-using ForwardDiff: ForwardDiff
+using Interpolations: Interpolations
 using OrdinaryDiffEq: OrdinaryDiffEq, ODEProblem, Tsit5, solve
 
-export MPMParams, MPM_rhs, simulate
+export MPMParams, DEM, load_dem, dem_from_func, MPM_rhs, simulate
+
+include("dem.jl")
+include("utils.jl")
 
 """
     MPMParams(coulomb_friction, turbulent_friction, g)
@@ -23,10 +26,12 @@ end
 MPMParams(coulomb_friction, turbulent_friction, g) =
     MPMParams(promote(coulomb_friction, turbulent_friction, g)...)
 
-function _dem_derivatives(Z, x, y)
-    grad = ForwardDiff.gradient(v -> Z(v[1], v[2]), [x, y])
-    hess = ForwardDiff.hessian(v -> Z(v[1], v[2]), [x, y])
-    return grad[1], grad[2], hess[1, 1], hess[1, 2], hess[2, 2]
+function _dem_derivatives(dem::DEM, x, y)
+    return dem.fgrad_x(x, y),
+    dem.fgrad_y(x, y),
+    dem.fgrad_xx(x, y),
+    dem.fgrad_xy(x, y),
+    dem.fgrad_yy(x, y)
 end
 
 function _velocity_magnitude(ux, uy, gradx, grady)
@@ -35,20 +40,19 @@ function _velocity_magnitude(ux, uy, gradx, grady)
 end
 
 """
-    MPM_rhs(alpha, params, Z; curvature=false)
+    MPM_rhs(alpha, params, dem; curvature=false)
 
 Right-hand side of the mass point ODE system (eqs. 12–15).
 
-`alpha = [x, y, ux, uy]`. `Z(x, y)` must be differentiable via ForwardDiff.
-Returns `dalphadt`.
+`alpha = [x, y, ux, uy]`. Returns `dalphadt`.
 """
-function MPM_rhs(alpha, params::MPMParams, Z; curvature::Bool = false)
+function MPM_rhs(alpha, params::MPMParams, dem::DEM; curvature::Bool = false)
     x, y, ux, uy = alpha[1], alpha[2], alpha[3], alpha[4]
     coulomb_friction = params.coulomb_friction
     turbulent_friction = params.turbulent_friction
     g = params.g
 
-    gradx, grady, gradxx, gradxy, gradyy = _dem_derivatives(Z, x, y)
+    gradx, grady, gradxx, gradxy, gradyy = _dem_derivatives(dem, x, y)
 
     sqrt_x = sqrt(1 + gradx^2)
     sqrt_y = sqrt(1 + grady^2)
@@ -93,13 +97,13 @@ function MPM_rhs(alpha, params::MPMParams, Z; curvature::Bool = false)
 end
 
 """
-    simulate(Z, params, x0, y0; ux0, uy0, dt, tend, t0, curvature, atol, rtol)
+    simulate(dem, params, x0, y0; ux0, uy0, dt, tend, t0, curvature, atol, rtol)
 
 Integrate the mass point model using the Tsit5 adaptive solver, saving the
 state at fixed time intervals `dt`.
 
 # Arguments
-- `Z`: DEM elevation function `(x, y) -> z`. Must be differentiable via ForwardDiff.
+- `dem`: `DEM` with elevation and derivative interpolants.
 - `params`: `MPMParams` with friction and gravity values.
 - `x0`, `y0`: Initial position.
 - `ux0`, `uy0`: Initial velocity components (default 0).
@@ -111,10 +115,9 @@ state at fixed time intervals `dt`.
 
 # Returns
 Matrix with columns `[t, x, y, ux, uy, u]` where `u` is the total velocity magnitude.
-Matches the output format of psimpy's `MassPointModel.simulate`.
 """
 function simulate(
-    Z,
+    dem::DEM,
     params::MPMParams,
     x0::Real,
     y0::Real;
@@ -129,7 +132,7 @@ function simulate(
 )
     alpha0 = [float(x0), float(y0), float(ux0), float(uy0)]
 
-    f(alpha, p, t) = MPM_rhs(alpha, p, Z; curvature)
+    f(alpha, p, t) = MPM_rhs(alpha, p, dem; curvature)
 
     prob = ODEProblem(f, alpha0, (float(t0), float(tend)), params)
     sol = solve(prob, Tsit5(); saveat = dt, abstol = atol, reltol = rtol)
@@ -139,7 +142,7 @@ function simulate(
 
     for i = 1:n
         alpha = sol.u[i]
-        gradx, grady, = _dem_derivatives(Z, alpha[1], alpha[2])
+        gradx, grady, = _dem_derivatives(dem, alpha[1], alpha[2])
         u = _velocity_magnitude(alpha[3], alpha[4], gradx, grady)
         output[i, :] .= (sol.t[i], alpha[1], alpha[2], alpha[3], alpha[4], u)
     end
