@@ -3,10 +3,9 @@ module MassPointModelAD
 using Interpolations: Interpolations
 using OrdinaryDiffEq: OrdinaryDiffEq, ODEProblem, Tsit5, solve
 
-export MPMParams, DEM, load_dem, dem_from_func, MPM_rhs, simulate
+export MPMParams, DEM, load_dem, save_dem, dem_from_func, MPM_rhs, simulate
 
 include("dem.jl")
-include("utils.jl")
 
 """
     MPMParams(coulomb_friction, turbulent_friction, g)

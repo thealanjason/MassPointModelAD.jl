@@ -72,6 +72,20 @@ function _build_dem(
 end
 
 """
+    dem_from_func(Z, x_coords, y_coords) -> DEM
+
+Build a `DEM` from a callable `Z(x, y)` evaluated on a regular grid.
+Useful for testing with analytical surfaces without needing a raster file.
+Derivatives are computed with central differences (np.gradient convention).
+"""
+function dem_from_func(Z, x_coords::AbstractVector, y_coords::AbstractVector)
+    x = collect(Float64, x_coords)
+    y = collect(Float64, y_coords)
+    z_grid = Float64[Z(xi, yj) for xi in x, yj in y]
+    return _build_dem(x, y, z_grid)
+end
+
+"""
     load_dem(filepath) -> DEM
 
 Load an ESRI ASCII raster and return a `DEM` with six bilinear interpolants:
@@ -102,5 +116,33 @@ function load_dem(filepath::AbstractString)
         z_grid = collect(transpose(raw))
 
         return _build_dem(x_coords, y_coords, z_grid)
+    end
+end
+
+"""
+    save_dem(dem, filepath; nodata_value=-9999.0)
+
+Write a `DEM` to an ESRI ASCII raster file.  Only the elevation Z is stored;
+derivatives are recomputed by `load_dem` when the file is read back.
+"""
+function save_dem(dem::DEM, filepath::AbstractString; nodata_value::Float64 = -9999.0)
+    ncols = length(dem.x_coords)
+    nrows = length(dem.y_coords)
+    xllcorner = dem.x_coords[1]
+    yllcorner = dem.y_coords[1]
+    cellsize = dem.x_coords[2] - dem.x_coords[1]
+
+    z_grid = [dem.fz(x, y) for x in dem.x_coords, y in dem.y_coords]
+
+    open(filepath, "w") do io
+        println(io, "ncols         $ncols")
+        println(io, "nrows         $nrows")
+        println(io, "xllcorner     $xllcorner")
+        println(io, "yllcorner     $yllcorner")
+        println(io, "cellsize      $cellsize")
+        println(io, "NODATA_value  $nodata_value")
+        for iy = nrows:-1:1
+            println(io, join((z_grid[ix, iy] for ix = 1:ncols), " "))
+        end
     end
 end
